@@ -1,0 +1,278 @@
+# GLOSSARIES REBUILD — Corrected Quality Assignment (v1, 2026-11-21)
+
+## 1. What this is
+
+You are REBUILDING the existing glossaries (G_ files) in the public repo
+https://github.com/moaaaz4568-prog/knowledge-forge — not building new ones.
+
+Why: a full quality audit of all 39,686 built G_ files found they are
+structurally correct but substantively poor:
+
+- Term paragraph is template boilerplate: 39,686 / 39,686 (100%)
+- "When the Meaning Breaks" is identical boilerplate: 39,686 / 39,686 (100%)
+- Fake synonyms (placeholder, not a real synonym): 36,483 / 39,686 (91.9%)
+- Junk-word terms (certain junk; true count likely ~15,000–20,000): 9,067 (22.8%)
+- Fully clean files in an independent 152-file sample: 0 / 152
+
+Batch 3 (glossaries-ig-batch3, 3,849 files) was verified independently and
+came out the same: structural FAIL (narrow — 10 files) + quality REJECT.
+The cause is the old template and the old term-selection rule (pick the most
+frequent word), NOT the length of any conversation. Fresh conversations alone
+do not fix it. This assignment replaces the old template with corrected
+rules. Follow it exactly.
+
+## 2. The quality bar — read these two files FIRST
+
+These are the ONLY clean glossaries that exist. They are the standard every
+rebuilt file must match. Read both in full before you write anything:
+
+- https://raw.githubusercontent.com/moaaaz4568-prog/biz-media-ar-wiki/main/namespaces/biz-media-ar/glossary/sales-outbound/G_hook_clarity.md
+- https://raw.githubusercontent.com/moaaaz4568-prog/biz-media-ar-wiki/main/namespaces/biz-media-ar/glossary/sales-outbound/G_consultative_closing.md
+
+IMPORTANT: those two files are in ARABIC. Your rebuilt files are in ENGLISH.
+Match their WRITING QUALITY, not their language. What makes them clean:
+
+- The Term paragraph is REAL prose, specific to the concept: it says what the
+  term means in THIS source, how it is used, and under what conditions. Every
+  sentence carries information about THIS term. No sentence could be swapped
+  into another file.
+- The synonyms are REAL variant forms the source itself uses.
+- The "When the Meaning Breaks" section names CONCRETE misreadings specific
+  to the term (e.g. a specific confusion about what the term promises, a
+  specific way the meaning collapses) — not generic warnings.
+
+Keep the ENGLISH headings and format of the existing batch files
+(Term / Synonyms / Live Example / When the Meaning Breaks). Only the prose
+quality changes. A rebuilt file must read like the two reference files:
+real documentation of a real concept, written fresh for that term and source.
+
+## 3. Scope and chunk protocol
+
+- TOTAL SCOPE: rebuild ALL G_ files — 43,535 built files, starting with
+  glossaries-ig-batch3 (3,849 files), then the other batches in order
+  (OCR, IG 1, 2, 4–10, EN YT 1–2, then the remaining batches).
+- CHUNKS: rebuild in chunks of exactly 50 codes, in list order.
+  Batch 3 = 77 chunks (76 × 50 + 1 × 49).
+- AFTER EACH CHUNK: push to GitHub, run gates G1/G2, report, then STOP.
+  The chunk is QUALITY-VERIFIED before the next chunk starts. Do NOT start
+  the next chunk until you are told to.
+- THIS MESSAGE assigns ONLY the pilot chunk (chunk 1 of batch 3, 50 codes,
+  listed in the message). Do NOT auto-continue past the pilot chunk.
+  Wait for the verification verdict.
+
+## 4. What "rebuild" means per file
+
+- Rewrite the file COMPLETELY FRESH from its source (its T_ atom file and
+  its S_ source file): a new Term paragraph, new Synonyms, new Breaks —
+  written in fresh words. Same filename, same location, same frontmatter
+  structure. This is a regeneration, NOT a patch: do not keep any sentence
+  from the old version.
+- RE-PICK THE TERM where the current term is junk (see §5). You cannot write
+  a real Term paragraph about a junk term, so the re-pick is part of the
+  rewrite.
+- RE-SELECT LIVE EXAMPLES only where the term changes. New term → new
+  examples showing the NEW term in use (re-selected from the same source,
+  byte-exact, 40–400 chars). Where the term stays, keep the existing
+  byte-exact examples as-is.
+- KEEP: file structure, frontmatter (type / topic / aka / origin), byte-exact
+  quotes, verified counts (re-count if the term changes), INDEX.md updated
+  for the rebuilt files (term / count / account).
+- NEVER touch sources/ or atoms/. Never delete, move, or rename any S_ or T_
+  file. Never delete a G_ file except under the delete rule in §10.
+- Duplicates stay separate, never merged. Contradictions are documented,
+  never resolved.
+
+## 5. Term selection (corrected rule)
+
+A term is a domain keyword or concept that carries meaning in THIS person's
+work — a word or phrase the person uses to name a real idea, method,
+product, or distinction in their content. The term MUST be a content word
+(noun, noun phrase, or domain verb) that names something specific.
+
+It must NOT be:
+
+- A filler / stopword: way, gonna, like, just, really, know, want, get,
+  make, people, video, thing, one, right, yeah, need, see, look, say,
+  time, etc. — UNLESS the person uses it with a specific, distinctive
+  meaning in this source, AND the Term paragraph shows that specific meaning.
+- A person's name — UNLESS the name IS the concept (e.g. a named
+  method/product named after a person), in which case document it as such.
+- A repeated chant or slogan fragment ("money money", "THANK YOU",
+  "Coca-Cola Coca-Cola").
+- A generic word (design, content, video, step, number, speaker, swipe)
+  UNLESS the person uses it with a specific, distinctive meaning in this
+  source (and the Term paragraph must show that specific meaning).
+- A word in a different script/language than the batch language (see §9).
+
+Selection method: READ the source, identify the 2–3 most meaningful content
+keywords, pick the one that best names a real idea in this source.
+Frequency is a TIEBREAKER, not the primary criterion. If two candidates are
+close, prefer the more specific / domain-relevant one.
+
+Short or noisy sources: if the source is very short (<100 words) or noisy
+(chant, music, slogan), pick the source's CENTRAL CONCEPT — what the source
+is ABOUT — even if it occurs only once or twice. Do NOT fall back to "most
+frequent word" — that is what produced the junk. If the source has NO
+meaningful concept (pure music/slogan with no content), document the source's
+central phrase as the term and state plainly in the Term paragraph that the
+source is a chant/slogan with no conceptual term. Do not invent a term.
+
+The term MUST occur literally in the source. This rule stays.
+
+## 6. Term paragraph (corrected requirements)
+
+Write a REAL paragraph (3–5 sentences) documenting how THIS person uses the
+term in THIS source. It must:
+
+- State what the term MEANS in this source (in the person's own usage, not a
+  dictionary definition).
+- Give the literal occurrence count (verified from the source — recount it).
+- Give 2–4 collocated words/phrases (verified from the source).
+- Give ONE concrete example of how the person uses it (a short paraphrase of
+  a live example, or a description of the context — NOT a copy of the live
+  example itself, which belongs in the Live Example section).
+- Be written in FRESH WORDS for THIS term and THIS source.
+
+It must be specific enough that a reader can tell what the term means in this
+source without reading the live examples. If the paragraph could apply to any
+source with the term swapped, it is boilerplate — rewrite it.
+
+BANNED SENTENCES — the verification will reject any file containing them
+(audit patterns A/B AND the batch-3 variant wording):
+
+- "is the most frequent repeated content term in this source"
+- "is the most prominent repeated term in this source"
+- "No content word repeats often enough in this short source"
+- "no term repeats enough for a frequency-based entry"
+- "This entry documents usage in this source only and does not turn the term into a general definition outside it."
+- "This entry documents usage in this specific source only and does not turn the term into a general definition outside it."
+- "The live examples below are taken verbatim from the source and show its actual use in context."
+- "The live examples below are taken verbatim from the transcript and show the term in its actual context."
+
+Do NOT copy any sentence from this assignment or from any format example.
+Write it fresh.
+
+## 7. Synonyms (corrected requirements)
+
+- List ONLY actual variant forms of the term that appear literally in the
+  source (e.g. plural/singular, a shortened form, a synonym the person
+  actually uses in this source).
+- If NO variant form appears in the source, write exactly one bullet:
+  `- No variant form of the term appears in this source.`
+  Do NOT invent a placeholder.
+- The `aka` frontmatter must contain ONLY real terms/synonyms (the term +
+  any real variant forms). If there are no variants, `aka` is just [term].
+  Do NOT put a placeholder in `aka`.
+
+BANNED STRINGS — the verification will reject any file containing them:
+"account context", "collection context", "context of account".
+
+ALSO BANNED (batch-3 defect): presenting a collocated word as a synonym.
+The synonym bullet must NOT be merely the first collocated word from the
+Term paragraph. A synonym must be a genuine variant form of the term, not a
+neighboring word.
+
+## 8. "When the Meaning Breaks" (corrected requirements)
+
+Write 2 bullets SPECIFIC to this term and this source. Each bullet must name
+a concrete misreading that applies to THIS term (not a generic warning).
+For example: a bullet about a specific confusion ("Read as [a different
+meaning of this word]: in this source the person means [X], not [Y].");
+a bullet about the source's limits ("Read as a claim about [broader topic]:
+this source only shows the person's use in [specific context].").
+
+BANNED BULLETS — the verification will reject any file containing them:
+
+- "Read as a general standard definition of ... the usage here is bounded to a transcribed Instagram video from one account and proves nothing about general usage or agreed meaning."
+- "Read as polished original text: this is machine-transcribed speech and transcription noise may distort the exact wording."
+- The OCR variants of these bullets ("bounded to an OCR-transcribed Instagram post image from one account" / "this is OCR output transcribed from images, and recognition noise may distort the exact wording") are also banned.
+
+The bullets must be DIFFERENT across files. If two files have identical
+Breaks bullets, at least one is boilerplate.
+
+## 9. Non-Latin source handling
+
+- Detect the source's ACTUAL language (by script/content). If it is not the
+  batch language (English for this batch), add a frontmatter field
+  `language: <actual language>` (e.g. `language: hi` for Hindi,
+  `language: ru` for Russian) AND add one sentence to the Term paragraph
+  stating the source's language (e.g. "The source is in Hindi (Devanagari
+  script); the term is documented as it appears in the source.").
+- The term itself stays LITERAL (in its own script) — do NOT transliterate
+  or translate it. The live examples stay byte-exact (in their own script).
+- Do NOT force an English term for a non-English source. Do NOT exclude
+  the file.
+- Batch 3 note: 27 non-Latin terms (26 Devanagari, all account
+  growwithanurag24; 1 Cyrillic). The 9 Devanagari terms that are ABSENT from
+  their sources must be re-picked from the actual source text when their
+  files come up: for `ig_growwithanurag24_DOQwzazErYp` the intended word is
+  plainly `प्लगइन`; for `ig_growwithanurag24_DPGylGTku0F` it is `एक्सटेंशन`;
+  the other 7 need a fresh pick from their sources. The 7 truncated-stem
+  Devanagari terms (`आपक`, `करन`, `अपन`, `करत`, `उसक` and similar) are not
+  literally in their sources whole-word — re-pick them too.
+
+## 10. Delete + regenerate rule
+
+- A file that FAILS the quality self-check in §11 is NOT trusted and must
+  NOT stay in the repo. DELETE it from the namespace (remove the file,
+  commit the removal) and rebuild it fresh from the source.
+- Never leave a below-bar file in place. Never "fix" a bad file by patching
+  one sentence — rewrite it completely fresh.
+- The old boilerplate version is REPLACED, not kept: the rebuilt file
+  overwrites it (git history preserves the old version; nothing is lost).
+- Never delete S_ or T_ files. Only G_ files are deleted and rebuilt.
+
+## 11. Quality self-check (run on EVERY file BEFORE pushing the chunk)
+
+- Template Term: REJECT if the Term paragraph contains any banned sentence (§6).
+- Junk term: REJECT if the term is a stopword/filler, a person's name, a
+  repeated chant, or a generic word with no specific meaning shown in the
+  Term paragraph.
+- Placeholder synonym: REJECT if Synonyms or `aka` contains "account
+  context", "collection context", "context of account", or a collocate
+  presented as a synonym.
+- Boilerplate Breaks: REJECT if the Breaks bullets match the banned template (§8).
+- Non-Latin: FLAG — verify the language flag + note (§9).
+- Live example: byte-exact, 40–400 chars, exactly 2 double quotes per quote
+  line, cited to the source.
+- Stated count: recount from the source; the stated count MUST match.
+- Cross-file uniqueness: if two files in the chunk have identical Breaks
+  bullets or identical Term paragraphs (modulo the term name), at least one
+  is boilerplate — rewrite it.
+- A file passes ONLY if it reads like the biz-media reference files (§2):
+  real prose, specific to the term and source, no copied sentences.
+
+## 12. Mechanics (unchanged G_ rules)
+
+- Clone the repo fresh. Verify the list (50 codes, 1:1 with the T_ files)
+  before building. Repo: https://github.com/moaaaz4568-prog/knowledge-forge
+- Namespace: `ig-atoms-en-batch3`.
+  Output: `namespaces/ig-atoms-en-batch3/glossary/<account>/G_<code>.md`
+  (filename = the T_ name with T_ replaced by G_).
+  Pilot chunk: all 50 codes are account `coachjoedrake`, so the output
+  directory is `namespaces/ig-atoms-en-batch3/glossary/coachjoedrake/`.
+- Frontmatter: `type: glossary` + `topic` (account) + `aka` (term + real
+  variants only) + `origin` (`sources/S_<code>.md`, taken from the T_ file's
+  `source` field — never inferred from the filename). Sections: Term /
+  Synonyms / Live Example / When the Meaning Breaks.
+- Live examples: byte-exact, 40–400 chars, exactly 2 double quotes per quote
+  line, cited as `"..." — sources/S_<code>.md`. OCR `<!-- image N -->`
+  markers are never quoted and no quote may cross one (none in this batch,
+  but the rule stands).
+- Gates G1 (triple_match) / G2 (glossary_live_example) after every chunk:
+  `python3 tools/gates.py check --namespace ig-atoms-en-batch3`. Push after
+  each chunk.
+- Filenames starting with `-` must be quoted in shell commands.
+- This batch's 10 known structural defects (9 Devanagari terms absent from
+  their sources + 1 genuinely wrong stated count, `kar` in
+  `ig_growwithanurag24_DPgb1OKD0HY`, stated 7 vs 5/6/3) are fixed by this
+  rebuild's re-pick + recount rules when their files come up. None of the
+  10 is in the pilot chunk.
+
+## 13. What to report when the chunk is done
+
+- The commit hash, G_ count (50/50), the gates result, and a per-file
+  quality self-check summary (how many files passed each check in §11, and
+  any file deleted + rebuilt under §10 and why).
+- Then STOP and wait for the verification verdict. Do NOT start the next
+  chunk.

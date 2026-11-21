@@ -1,0 +1,74 @@
+PILOT FIX — 9 REJECT files (batch 3 rebuild pilot).
+
+The pilot chunk (first 50 codes of glossaries-ig-batch3) was rebuilt under the
+corrected assignment. The verification verdict: 41/50 files fully clean (82%),
+9 REJECT. The other 41 files are fine — do NOT touch them. Your job in THIS
+message is ONLY the 9 REJECT files below: DELETE them from the namespace and
+rebuild them fresh under the corrected rules, including the two NEW rules N1
+and N2 below.
+
+THE 9 FILES (all account coachjoedrake, namespace ig-atoms-en-batch3,
+output namespaces/ig-atoms-en-batch3/glossary/coachjoedrake/):
+1. ig_coachjoedrake_Co6-R9dgxft
+2. ig_coachjoedrake_CpbJnmbAHOd
+3. ig_coachjoedrake_Cq-LdDAg3Sx
+4. ig_coachjoedrake_Cr-ircRgMdy
+5. ig_coachjoedrake_Cs-2IRJAXnB
+6. ig_coachjoedrake_Cs0o3Y-AmCK
+7. ig_coachjoedrake_CsEUY6kAKg_
+8. ig_coachjoedrake_Csi82KOgKik
+9. ig_coachjoedrake_CsqTpNWgYCh
+
+WHY THEY WERE REJECTED:
+- 7 of the 9 picked chanted lyric hooks as terms: "put your back into it",
+  "do your thing", "patty cake", "all the way up", "like this and like
+  that", "rhythm of the night", "gotta get the money".
+- 2 of the 9 carry the shared closing formula "The entry documents the
+  caption as the source's central concept.": ig_coachjoedrake_CsEUY6kAKg_
+  and ig_coachjoedrake_Csi82KOgKik. (Csi82KOgKik is also a weak
+  single-occurrence lyric phrase.)
+
+NEW RULE N1 — CHANT RULE (pilot verdict 41/50 clean, 9 REJECT — 7 of the 9
+rejects picked chanted lyric hooks as terms): a chanted lyric hook / song
+refrain is NEVER the term, even when it is the source's central phrase. A
+refrain is sung, not used as a concept — it names no idea, method, product,
+or distinction. If the source is a pure chant with no real domain term, use
+the honest-caption treatment: document the chant/slogan as what it is and
+state plainly in the Term paragraph that the source has no conceptual term —
+no term claim. Only pick a term when a real content word exists in the
+source.
+
+NEW RULE N2 — CLOSING BAN (pilot verdict 41/50 clean, 9 REJECT — 2 of the
+9 end with the shared closing formula "The entry documents the caption as the
+source's central concept."): NEVER end a Term paragraph with "The entry
+documents the caption as the source's central concept." or any sentence
+starting with "The entry documents" — every Term paragraph ends in its own
+fresh words. Any "The entry documents ..." formula is banned; the
+verification will reject any file containing it.
+
+WHAT TO DO:
+1. Check your local clone: if the sandbox was recycled and the clone is gone,
+   re-clone the repo fresh (https://github.com/moaaaz4568-prog/knowledge-forge).
+2. DELETE these 9 G_ files from the namespace (remove the files; git history
+   preserves the old versions) and rebuild them COMPLETELY FRESH from their
+   sources (their T_ atom files and S_ source files) under the full corrected
+   assignment you already have in this conversation, INCLUDING new rules N1
+   and N2 above. Same filenames, same location, same frontmatter structure.
+3. For each file: re-pick a REAL term where one exists in the source (a
+   content word naming a real idea, method, or distinction — see §5); if the
+   source is a pure chant with no real domain term, use the honest-caption
+   treatment (N1) — never present a refrain as a term. Reword any "The
+   entry documents ..." closing (N2) — every Term paragraph ends in its own
+   fresh words. Re-select live examples where the term changes (byte-exact,
+   40–400 chars); re-count the stated occurrence count where the term
+   changes; update INDEX.md for the 9 files.
+4. Re-run the §11 quality self-check on all 9 files (including the new N1
+   chant-term and N2 closing-formula checks) and gates G1/G2:
+   python3 tools/gates.py check --namespace ig-atoms-en-batch3.
+5. Push to origin main using the token already in this conversation.
+6. Report (commit hash, 9/9, gates, quality self-check summary), then STOP
+   and wait for the verification verdict. Do NOT touch the other 41 pilot
+   files. Do NOT start batch A or any other batch.
+
+NEVER touch sources/ or atoms/. Never delete, move, or rename any S_ or T_
+file. Only these 9 G_ files are deleted and rebuilt.
